@@ -1,10 +1,10 @@
 
 using FluentValidation;
+using lojadegames.Service.Implements;
 using Microsoft.EntityFrameworkCore;
 using projeto_final_bloco_02.Data;
 using projeto_final_bloco_02.Model;
 using projeto_final_bloco_02.Service;
-using projeto_final_bloco_02.Service.Implements;
 using projeto_final_bloco_02.Validator;
 
 namespace projeto_final_bloco_02
