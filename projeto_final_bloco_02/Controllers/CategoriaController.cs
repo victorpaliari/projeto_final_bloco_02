@@ -91,5 +91,11 @@ namespace projeto_final_bloco_02.Controllers
                 return NoContent();
 
             }
-        }
+
+            [HttpGet("tipo/{tipo}")]
+            public async Task<ActionResult> GetByTipo(string tipo)
+            {
+                return Ok(await _categoriaService.GetByTipo(tipo));
+            }
+    }
 }

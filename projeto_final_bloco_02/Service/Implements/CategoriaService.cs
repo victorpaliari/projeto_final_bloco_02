@@ -52,6 +52,16 @@ namespace projeto_final_bloco_02.Service.Implements
             }
         }
 
+        public async Task<IEnumerable<Categoria>> GetByTipo(string tipo)
+        {
+            var Categoria = await _context.Categorias
+                .Include(t => t.Produto)
+                .Where(p => p.Tipo.Contains(tipo))
+                .ToListAsync();
+
+            return Categoria;
+        }
+
         public async Task<Categoria?> Update(Categoria Categoria)
             {
                 var CategoriaUpdate = await _context.Categorias.FindAsync(Categoria.Id);

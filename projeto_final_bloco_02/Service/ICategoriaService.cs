@@ -8,6 +8,8 @@ namespace projeto_final_bloco_02.Service
 
         Task<Categoria?> GetById(long id);
 
+        Task<IEnumerable<Categoria>> GetByTipo(string tipo);
+
         Task<Categoria?> Create(Categoria Categoria);
 
         Task<Categoria?> Update(Categoria Categoria);
