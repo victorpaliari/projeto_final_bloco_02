@@ -6,7 +6,6 @@ using projeto_final_bloco_02.Service;
 namespace projeto_final_bloco_02.Controllers
 {
     [Route("~/produtos")]
-    //[ApiController] indica que a classe é do tipo Controller
     [ApiController]
     public class ProdutoController : ControllerBase
     {
@@ -58,7 +57,7 @@ namespace projeto_final_bloco_02.Controllers
             var Resposta = await _produtoService.Create(produto);
 
             if (Resposta is null)
-                return BadRequest("Tema não encontrado!");
+                return BadRequest("Categoria não encontrada!");
 
             return CreatedAtAction(nameof(GetById), new { id = produto.Id }, produto);
 
@@ -68,7 +67,7 @@ namespace projeto_final_bloco_02.Controllers
         public async Task<ActionResult> Update([FromBody] Produto produto)
         {
             if (produto.Id == 0)
-                return BadRequest("Id da Produto é inválido");
+                return BadRequest("Id do Produto é inválido");
 
             var validarProduto = await _produtoValidator.ValidateAsync(produto);
             if (!validarProduto.IsValid)
@@ -78,7 +77,7 @@ namespace projeto_final_bloco_02.Controllers
             }
             var Resposta = await _produtoService.Update(produto);
             if (Resposta is null)
-                return NotFound("Produto e/ou Tema não encontrados!");
+                return NotFound("Produto e/ou Categoria não encontrados!");
 
 
             return Ok(Resposta);
@@ -89,7 +88,7 @@ namespace projeto_final_bloco_02.Controllers
         {
             var BuscaProduto = await _produtoService.GetById(id);
             if (BuscaProduto is null)
-                return NotFound("Produto não foi encontrada!");
+                return NotFound("Produto não foi encontrado!");
             await _produtoService.Delete(BuscaProduto);
             return NoContent();
         }

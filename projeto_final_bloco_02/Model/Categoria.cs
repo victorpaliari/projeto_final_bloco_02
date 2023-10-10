@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace projeto_final_bloco_02.Model
 {
-    public class Produto : Auditable
+    public class Categoria
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,18 +12,10 @@ namespace projeto_final_bloco_02.Model
 
         [Column(TypeName = "varchar")]
         [StringLength(100)]
-        public string Nome { get; set; } = string.Empty;
+        public string Tipo { get; set; } = string.Empty;
 
-        [Column(TypeName = "decimal(5,2)")]
-        //[Decimal(5, 2)]
-
-        public decimal Preco { get; set; }
-
-        [Column(TypeName = "varchar")]
-        [StringLength(100)]
-        public string Foto { get; set; } = string.Empty;
-
-        public virtual Categoria? Categoria { get; set; }
+        [InverseProperty("Categoria")]
+        public virtual ICollection<Produto>? Produto { get; set; }
 
     }
 }

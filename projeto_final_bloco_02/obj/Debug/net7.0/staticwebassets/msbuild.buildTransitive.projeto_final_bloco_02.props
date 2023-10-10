@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\projeto_final_bloco_02.props" />
+</Project>
